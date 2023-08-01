@@ -1,0 +1,16 @@
+<h1>BLOSSOM SOLVER</h1>
+<h2>Words for {{ letters }}</h2>
+<table>
+    <tr>
+        <th>Word</th>
+        <th>Letter to maximise</th>
+        <th>Score</th>
+    </tr>
+    {% for word in words %}    
+    <tr>
+        <td>{{ word.0 }}</td>
+        <td>{{ word.1 }}</td>
+        <td>{{ word.2 }}</td>
+    </tr>
+    {% endfor %}
+</table>

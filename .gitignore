@@ -1,0 +1,9 @@
+node_modules
+__pycache__
+Lib/
+env
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media
