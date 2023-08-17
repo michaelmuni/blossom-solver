@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSort } from '@fortawesome/free-solid-svg-icons'
 
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.withCredentials = true;
+
 const WordsPage = ({letters}) => {
   const [words, setWords] = useState([]) // the words as they come from the server - used to handle sorting/unsorting 
   const [wordsToRender, setWordsToRender] = useState([]); // the actual words to render on the page

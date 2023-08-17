@@ -1,5 +1,6 @@
 {
   "name": "blossom-front-end",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://127.0.0.1:8000",
@@ -42,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  }, 
+  "engines": {
+    "node": "18.17.0",
+    "npm": "9.6.7"
   }
 }
