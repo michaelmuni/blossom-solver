@@ -30,6 +30,13 @@ def word_list(request, letters):
 
     return Response(words)
 
+@api_view(['POST'])
+def squaredle_list(request):
+    board = request.data['board']
+    words = trie.find_all_words(board)
+
+    return Response(words)
+
 
 
 

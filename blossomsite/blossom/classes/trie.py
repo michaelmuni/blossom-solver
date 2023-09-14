@@ -65,3 +65,39 @@ class Trie:
             result += self.find_all_words_maximising_letters(letters, letter)
 
         return result
+    
+    def find_all_words(self, board):
+        self.words = {}
+        if not board: return []
+
+        for i in range(len(board)):
+            for j in range(len(board[0])): 
+                self.find_all_words_from_cell(board, i, j, "", self.root)
+
+        return sorted(self.words.keys(), key=len)
+
+    def find_all_words_from_cell(self, board, i, j, prefix, node):
+        if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
+            return
+                
+        if not node: return
+
+        if node.is_end is True and len(prefix) > 3 and prefix not in self.words: 
+            self.words[prefix] = 1
+
+        tmp = board[i][j]
+        board[i][j] = '#'
+
+        if tmp in node.children:
+            self.find_all_words_from_cell(board, i-1, j, prefix+tmp, node.children[tmp]) 
+            self.find_all_words_from_cell(board, i, j-1, prefix+tmp, node.children[tmp]) 
+            self.find_all_words_from_cell(board, i-1, j-1, prefix+tmp, node.children[tmp]) 
+            self.find_all_words_from_cell(board, i-1, j+1, prefix+tmp, node.children[tmp]) 
+            self.find_all_words_from_cell(board, i, j+1, prefix+tmp, node.children[tmp]) 
+            self.find_all_words_from_cell(board, i+1, j+1, prefix+tmp, node.children[tmp]) 
+            self.find_all_words_from_cell(board, i+1, j-1, prefix+tmp, node.children[tmp]) 
+            self.find_all_words_from_cell(board, i+1, j, prefix+tmp, node.children[tmp]) 
+
+        board[i][j] = tmp
+
+    
